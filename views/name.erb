@@ -1,0 +1,26 @@
+<h1><%= @name.capitalize %></h1>
+
+<ul>
+  <% @content[params[:name].to_sym].each do |name, info| %>
+  <li>
+    <%= name.capitalize %>:
+  </li>
+    <ul>
+      <li>
+        <%= [info].join(", ") %>
+      </li>
+    </ul>
+  <% end %>
+</ul>
+
+<ul>
+  <% @content.each do |name, _| %>
+    <% unless name == @name %>
+      <li><a href="<%= name %>"><%= name.capitalize %></a></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<footer>
+  <p>There are <%= @content.keys.count %> users and with a total of <%= count_interests(@content) %> interests</p>
+</footer>
